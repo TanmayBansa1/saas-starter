@@ -10,11 +10,12 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { AnimatePresence, motion } from "framer-motion";
+import SyncModal from "./sync-modal";
 
 type AuthModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  defaultView: "sign-in" | "sign-up";
+  defaultView: "sign-in" | "sign-up" | "sync";
 };
 
 export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModalProps) {
@@ -33,7 +34,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModa
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ 
+              transition={{
                 duration: 0.8,
                 ease: [0.4, 1, 0.3, 1],
               }}
@@ -52,7 +53,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModa
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
-                        transition={{ 
+                        transition={{
                           duration: 0.8,
                         }}
                       >
@@ -61,15 +62,16 @@ export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModa
                             baseTheme: [neobrutalism],
                           }}
                           routing="virtual"
+                          oauthFlow="popup"
                         />
                       </motion.div>
-                    ) : (
+                    ) : defaultView === "sign-up" ? (
                       <motion.div
                         key="sign-up"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
-                        transition={{ 
+                        transition={{
                           duration: 0.8,
                           ease: [0.4, 1, 0.3, 1],
                         }}
@@ -79,7 +81,19 @@ export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModa
                             baseTheme: neobrutalism,
                           }}
                           routing="virtual"
+                          oauthFlow="popup"
                         />
+                      </motion.div>
+                    ) : (
+                      <motion.div key={"sync"} initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{
+                          duration: 0.8,
+                          ease: [0.4, 1, 0.3, 1],
+                        }}>
+                          <SyncModal></SyncModal>
+
                       </motion.div>
                     )}
                   </AnimatePresence>
