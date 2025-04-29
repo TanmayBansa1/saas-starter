@@ -1,29 +1,133 @@
-# Create T3 App
+# SaaS Starter Kit
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A modern SaaS starter kit built with the latest technologies for rapid product development. This project is pre-configured with authentication, database, UI, and developer tooling for a seamless developer experience.
 
-## What's next? How do I make an app with this?
+---
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## 🚀 Technologies Included
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- **Next.js** (App Router, React 19)
+- **Prisma** (PostgreSQL ORM)
+- **Clerk** (Authentication)
+- **Tailwind CSS** (with PostCSS, custom theming)
+- **shadcn/ui** (Component library)
+- **Radix UI** (Accessible UI primitives)
+- **Lucide Icons** (Icon set)
+- **Framer Motion** (Animations)
+- **Zod** (Schema validation)
+- **TypeScript** (Strict typing)
+- **ESLint & Prettier** (Linting & formatting)
+- **pnpm** (Fast package manager)
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+## 🛠️ Getting Started
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### 1. Clone the Repository
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+git clone <repo-url>
+cd saas-starter
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### 2. Install Dependencies
 
-## How do I deploy this?
+This project uses **pnpm**. If you don't have it:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+npm install -g pnpm
+```
+
+Then install:
+
+```bash
+pnpm install
+```
+
+### 3. Configure Environment Variables
+
+Copy the example environment file and fill in the required values:
+
+```bash
+cp .env.example .env
+```
+
+- Set up your PostgreSQL `DATABASE_URL` (see `.env.example` for format)
+- [Sign up for Clerk](https://clerk.dev/) and add your `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY`
+
+### 4. Set Up the Database
+
+Run the following to create and migrate your database:
+
+```bash
+pnpm db:generate
+```
+
+To open Prisma Studio (GUI for your DB):
+
+```bash
+pnpm db:studio
+```
+
+### 5. Run the Development Server
+
+```bash
+pnpm dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to see your app.
+
+---
+
+## 🧩 Project Structure
+
+- `src/` — Application source code
+- `prisma/` — Prisma schema & migrations
+- `public/` — Static assets
+- `.env.example` — Example environment variables
+
+---
+
+## 📝 Scripts
+
+- `pnpm dev` — Start development server
+- `pnpm build` — Build for production
+- `pnpm lint` — Run ESLint
+- `pnpm format:write` — Format codebase
+- `pnpm db:generate` — Run Prisma migrations
+- `pnpm db:studio` — Open Prisma Studio
+
+---
+
+## 🧑‍💻 Developer Tooling
+
+- **ESLint** & **Prettier** for code quality
+- **TypeScript** strict mode
+- **shadcn/ui** and **Radix UI** for accessible, customizable components
+- **pnpm** for fast, reliable installs
+
+---
+
+## 📦 Deployment
+
+You can deploy this app easily to [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/), or Docker. See official Next.js docs for best practices.
+
+---
+
+## 🤝 Credits
+
+- [Next.js](https://nextjs.org/)
+- [Prisma](https://prisma.io/)
+- [Clerk](https://clerk.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Zod](https://zod.dev/)
+
+---
+
+## 📄 License
+
+MIT
