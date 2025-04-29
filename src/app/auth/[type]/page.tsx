@@ -7,7 +7,7 @@ import React from 'react'
 
 const AuthPage = () => {
     const params = useParams();
-    const type = params?.type as "sign-in" | "sign-up";
+    const type = params?.type as "sign-in" | "sign-up" | "sync";
     const router = useRouter();
     return (
         <AuthModal isOpen={true} onClose={()=>{
@@ -15,7 +15,5 @@ const AuthPage = () => {
         }} defaultView={type}>
         </AuthModal>
     )
-
 }
-
 export default AuthPage
