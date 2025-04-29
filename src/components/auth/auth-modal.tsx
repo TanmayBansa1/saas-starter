@@ -40,7 +40,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "sign-in" }: AuthModa
             >
               <DialogContent className="sm:max-w-[425px] flex flex-col items-center justify-center overflow-x-hidden no-scrollbar bg-amber-100">
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">Welcome to Sketchy</DialogTitle>
+                  <DialogTitle className="text-2xl font-bold text-center">Welcome to saas-starter</DialogTitle>
                 </DialogHeader>
                 <motion.div
                   layout
