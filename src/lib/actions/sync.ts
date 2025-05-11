@@ -18,25 +18,23 @@ export async function syncUser() {
       throw new Error("User not found");
     }
     
-    const userData = {
-      email: user.emailAddresses[0].emailAddress,
-      firstName: user.firstName || "",
-      lastName: user.lastName || "",
-      imageUrl: user.imageUrl || ""
-    };
-
-    // Check if user already exists
-    const existingUser = await db.user.findUnique({
-      where: { email: userData.email }
-    });
-
-    if (existingUser) {
-      return existingUser;
-    }
-    
-    const dbUser = await db.user.create({
-      data: userData
-    });
+    const dbUser = await db.user.upsert({
+      where:{
+          email: user.emailAddresses[0]?.emailAddress
+      },
+      update:{
+          email: user.emailAddresses[0]?.emailAddress || "",
+          firstName: user.firstName ,
+          lastName: user.lastName ,
+      },
+      create:{
+          id: user.id,
+          email: user.emailAddresses[0]?.emailAddress || "",
+          firstName: user.firstName ,
+          lastName: user.lastName ,
+          imageUrl: user.imageUrl ,
+      }
+  })
     
     return dbUser;
   } catch (e) {
